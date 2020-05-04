@@ -1,0 +1,15 @@
+html {
+  background-color: var(--background);
+  --offwhite: #f9f4f9;
+  --background: #e9e0e8;
+  --text: #363062;
+  --headline: #4d4c7d;
+  --link: #827397;
+  --accent: #d8b9c3;
+  --offset: #4d4c7d1a;
+  font-family: "Roboto, sans-serif";
+}
+
+a {
+  color: var(--link);
+}

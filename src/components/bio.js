@@ -11,7 +11,7 @@ import Image from "gatsby-image"
 
 import { rhythm } from "../utils/typography"
 
-const Bio = () => {
+const Bio = ({ onHomepage }) => {
   const data = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
@@ -26,6 +26,7 @@ const Bio = () => {
           author {
             name
             summary
+            pronoun
           }
           social {
             twitter
@@ -36,6 +37,7 @@ const Bio = () => {
   `)
 
   const { author, social } = data.site.siteMetadata
+  const rootPath = `${__PATH_PREFIX__}/`
   return (
     <div
       style={{
@@ -57,10 +59,11 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author.name}</strong> {author.summary}
+        {/*!onHomepage && (Written by <strong>`${author.name}`</strong>)*/}
+        {author.summary}
         {` `}
         <a href={`https://twitter.com/${social.twitter}`}>
-          You should follow him on Twitter
+          You should follow {author.pronoun} on Twitter
         </a>
       </p>
     </div>

@@ -1,0 +1,44 @@
+.articleCard {
+  background-color: var(--offset);
+  color: var(--text);
+  margin-bottom: 1.5em;
+  padding: 1em;
+  border-top: 5px solid var(--link);
+}
+
+.articleCard h3 {
+  margin-top: 0;
+}
+.articleTitle {
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.button {
+  color: var(--text);
+  transition: 0.25s;
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+
+.button:hover,
+.button:focus {
+  border-color: var(--text);
+  box-shadow: inset 0 0 0 2em var(--text);
+}
+
+.link {
+  box-shadow: none;
+}
+
+.button:hover .link,
+.button:focus .link {
+  box-shadow: none;
+  text-decoration: none;
+  color: var(--background);
+}

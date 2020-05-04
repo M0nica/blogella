@@ -1,34 +1,34 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import styles from "./index.module.css"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-
+  const title = data.site.siteMetadata.title
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={title}>
       <SEO title="All posts" />
-      <Bio />
+      <Bio onHomepage />
       {posts.map(({ node }) => {
+        const time = node.timeToRead
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug}>
+          <article className={styles.articleCard} key={node.fields.slug}>
             <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+              <h3>
+                <Link className={styles.articleTitle} to={node.fields.slug}>
                   {title}
                 </Link>
               </h3>
               <small>{node.frontmatter.date}</small>
+              <small> &bull; {time} min.</small>
             </header>
             <section>
               <p
@@ -37,6 +37,16 @@ const BlogIndex = ({ data, location }) => {
                 }}
               />
             </section>
+            <button className={styles.button}>
+              {" "}
+              <Link
+                to={node.fields.slug}
+                styles={{ textDecoration: `none` }}
+                className={styles.link}
+              >
+                read article <FontAwesomeIcon icon={faAngleDoubleRight} />
+              </Link>
+            </button>
           </article>
         )
       })}
@@ -65,6 +75,7 @@ export const pageQuery = graphql`
             title
             description
           }
+          timeToRead
         }
       }
     }
