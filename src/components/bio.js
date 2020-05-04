@@ -37,7 +37,7 @@ const Bio = ({ onHomepage }) => {
   `)
 
   const { author, social } = data.site.siteMetadata
-  const rootPath = `${__PATH_PREFIX__}/`
+
   return (
     <div
       style={{

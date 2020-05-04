@@ -2,33 +2,31 @@ import React from "react"
 import { Link } from "gatsby"
 
 import styles from "./layout.module.css"
-import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
+  // const rootPath = `${__PATH_PREFIX__}/`
   let header
 
-  {
-    header = (
-      <h3
-        className={styles.headline}
+  header = (
+    <h3
+      className={styles.headline}
+      style={{
+        fontFamily: `Montserrat, sans-serif`,
+        marginTop: 0,
+      }}
+    >
+      <Link
         style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
+          boxShadow: `none`,
+          color: `inherit`,
         }}
+        to={`/`}
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    )
-  }
+        {title}
+      </Link>
+    </h3>
+  )
+
   return (
     <div className={styles.container}>
       <header>{header}</header>
